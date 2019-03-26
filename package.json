@@ -1,0 +1,30 @@
+{
+  "name": "document-scanner",
+  "version": "1.0.0",
+  "description": "Library for scanning documents. Uses SANE scanimage.",
+  "main": "lib/index.js",
+  "types": "lib/index.d.ts",  
+  "scripts": {
+    "start": "tsc -w",
+    "ts-node": "ts-node",
+    "prepublish": "npm run build",
+    "build": "rimraf lib && tsc",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "sane",
+    "scanner",
+    "document",
+    "scanimage"
+  ],
+  "author": "Studio La Cosa Nostra <studiolacosanostra@gmail.com>",
+  "license": "ISC",
+  "dependencies": {
+    "sane-scanimage-wrapper": "^0.1.1",
+    "usb": "^1.5.0"
+  },
+  "devDependencies": {
+    "@types/node": "^11.11.7",
+    "@types/usb": "^1.5.1"
+  }
+}
