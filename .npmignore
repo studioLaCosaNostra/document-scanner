@@ -1,0 +1,5 @@
+.git/
+src/
+npm-debug.log
+jest.config.js
+tsconfig.json
