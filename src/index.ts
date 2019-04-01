@@ -2,6 +2,7 @@ import { EventEmitter } from "events";
 import * as usb from 'usb';
 import { Stream } from "stream";
 
+const hasbin = require('hasbin');
 const sane = require('sane-scanimage-wrapper');
 
 export interface IDocumentScannerDevice {
@@ -19,6 +20,8 @@ export interface IEventEmmiter {
 }
 
 export class DocumentScanner extends EventEmitter implements IEventEmmiter {
+  public missingRequirements: { code: number, message: string }[] = [];
+
   constructor(private device?: IDocumentScannerDevice) {
     super();
 
@@ -68,5 +71,16 @@ export class DocumentScanner extends EventEmitter implements IEventEmmiter {
 
   static listDevices(): Promise<IDocumentScannerDevice[]> {
     return sane.listDevices()
+  }
+
+  hasRequirements(): boolean {
+    const hasScanimage = hasbin.sync('scanimage');
+    if (!hasScanimage) {
+      this.missingRequirements.push({
+        code: 1,
+        message: 'Missing scanimage in PATH environment variable.'
+      });
+    }
+    return hasScanimage;
   }
 }

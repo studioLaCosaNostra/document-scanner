@@ -1,9 +1,9 @@
 {
   "name": "document-scanner",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Library for scanning documents. Uses SANE scanimage.",
   "main": "lib/index.js",
-  "types": "lib/index.d.ts",  
+  "types": "lib/index.d.ts",
   "scripts": {
     "start": "tsc -w",
     "ts-node": "ts-node",
@@ -20,11 +20,13 @@
   "author": "Studio La Cosa Nostra <studiolacosanostra@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "hasbin": "^1.2.3",
     "sane-scanimage-wrapper": "^0.1.1",
     "usb": "^1.5.0"
   },
   "devDependencies": {
     "@types/node": "^11.11.7",
-    "@types/usb": "^1.5.1"
+    "@types/usb": "^1.5.1",
+    "typescript": "^3.4.1"
   }
 }
