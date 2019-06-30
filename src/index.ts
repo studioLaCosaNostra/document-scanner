@@ -13,13 +13,13 @@ export interface IDocumentScannerDevice {
   index: string;
 }
 
-export interface IEventEmmiter {
+export interface IEventEmitter {
   on(event: 'usbDevices', listener: (devices: usb.Device[]) => void): this;
   on(event: 'scannerDevices', listener: (devices: IDocumentScannerDevice[]) => void): this;
   on(event: string, listener: Function): this;
 }
 
-export class DocumentScanner extends EventEmitter implements IEventEmmiter {
+export class DocumentScanner extends EventEmitter implements IEventEmitter {
   public missingRequirements: { code: number, message: string }[] = [];
 
   constructor(private device?: IDocumentScannerDevice) {
